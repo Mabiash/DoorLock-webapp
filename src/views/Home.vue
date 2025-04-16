@@ -52,4 +52,14 @@ import Content from "../components/pages/dashboardContent.vue"
     border-radius:0 0 0 30px ;
     box-shadow: -15px 15px 0px  var(--primary-color);
 }
+
+@media screen and (max-width: 650px) {
+    .curve-t, .curve-b{
+        display: none;
+    }
+
+    .main-content{
+        border: none;
+    }
+}
 </style>

@@ -5,10 +5,10 @@
     <header class="header">
         <h1 class="label">Dashboard</h1>
         <div class="ipt-con">
-            <div class="ipt">
+            <!-- <div class="ipt">
                 <input type="text" placeholder="Search rooms..." class="search-room">
                 <i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+            </div> -->
 
             <div class="profile-container">
 
@@ -18,31 +18,30 @@
 </template>
 
 <style scoped>
-.header{
+.header {
     width: 100%;
     height: auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
 
-.label{
+.label {
     color: var(--primary-color);
     font-size: clamp(16px, 3vw, 22px);
 }
-.ipt-con{
-    width: clamp(18rem, 40%, 28rem);
-
+.ipt-con {
+    width: fit-content;
     height: 2.3rem;
     display: flex;
     position: relative;
-    align-items: center;
+    align-items: center;  
     gap: 10px;
 }
 
-.ipt{
+.ipt {
     flex: 1;
     height: 100%;
     position: relative;
@@ -50,13 +49,13 @@
     align-items: center;
 }
 
-.ipt i{
+.ipt i {
     position: absolute;
     right: 10px;
     color: oklch(26.2% 0.051 172.552);
     cursor: pointer;
 }
-.search-room{
+.search-room {
     border: 2px solid var(--primary-color);
     border-radius: 10px;
     font-size: 12px;
@@ -65,11 +64,17 @@
     height: 100%;
 }
 
-.profile-container{
+.profile-container {
     height: 100%;
     aspect-ratio: 1;
     border-radius: 50rem;
     background-color: rgb(0, 0, 0);
     border: 2px solid var(--primary-color);
+}
+
+@media screen and (max-width: 650px) {
+    .header {
+        padding: 10px;
+    }
 }
 </style>

@@ -120,5 +120,11 @@ li.active {
     color: var(--primary-color);
     font-weight: bold;
 }
+
+@media screen and (max-width: 650px) {
+    .nav-con{
+        display: none;
+    }
+}
 </style>
   
