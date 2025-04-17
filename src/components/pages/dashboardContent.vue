@@ -12,7 +12,6 @@ const closedAllDoors = () => {
     rooms.data.forEach(room => {
         room.isOpen = false;
     })
-
 }
 
 const openAllDoors = () => {
@@ -39,6 +38,7 @@ const updateStatus = (roomId) => {
                 </div>
             </div>
             <div class="rooms-container">
+                <h5 v-if="rooms.isAllRoomsClosed">All Rooms are Closed</h5>
                 <div v-for="data in rooms.openRooms" class="rooms">
                     <h3>{{ data.roomName }}</h3>
                     <p>Open</p>
@@ -60,6 +60,7 @@ const updateStatus = (roomId) => {
                 </div>
             </div>
             <div class="rooms-container">
+                <h5 v-if="rooms.isAllRoomsOpen">All Rooms are Open</h5>
                 <div v-for="data in rooms.closedRooms" class="rooms">
                     <h3>{{ data.roomName }}</h3>
                     <p>Closed</p>
@@ -81,6 +82,14 @@ const updateStatus = (roomId) => {
 </template>
 
 <style scoped>
+
+h5{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    font-size: clamp(20px, 4vw, 22px);
+}
 .content-container {
     flex: 1;
     width: 100%;
@@ -96,9 +105,9 @@ const updateStatus = (roomId) => {
 .boxes {
     flex: 1;
     height: fit-content;
-    min-height: 22.2rem;
+    min-height: 26.6rem;
     min-width: 300px;
-    max-height: 22.2rem;
+    max-height: 26.6rem;
 }
 
 .rooms-open-con,
@@ -120,12 +129,9 @@ const updateStatus = (roomId) => {
 .rooms-heading div {
     display: flex;
     gap: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
-.rooms-heading div button {
-    font-size: 12px;
-}
 .rooms-container {
     flex: 1;
     width: 100%;
@@ -168,9 +174,8 @@ const updateStatus = (roomId) => {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-
     border-radius: 10px;
-    min-height: 9rem;
+    min-height: 11rem;
     padding: 10px;
     color: rgb(255, 254, 239);
     display: flex;
@@ -180,14 +185,19 @@ const updateStatus = (roomId) => {
 
 }
 
+h4 {
+    font-size: clamp(16px, 3vw, 20px);
+}
+
 .rooms h3 {
     letter-spacing: .1rem;
+    font-size: 20px;
 }
 .rooms p {
-    font-size: clamp(8.78px, 2vw, 10px);
+    font-size: clamp(10px, 2vw, 14px);
     letter-spacing: .02rem;
     margin-top: .4rem;
-    color: rgb(228, 228, 228);
+    color: rgb(219, 219, 219);
 }
 .close-all-btn {
     display: flex;
@@ -215,12 +225,14 @@ const updateStatus = (roomId) => {
 }
 
 .recent-logs {
-    min-width: 300px;
     border-radius: 10px;
     overflow-x: hidden;
     min-height: 0;
     height: fit-content;
-    overflow: auto;
+    min-width: 480px;
+    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: thin;
 }
 
 
@@ -228,6 +240,13 @@ const updateStatus = (roomId) => {
     .content-container {
         padding: 10px;
         scrollbar-width: none;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .boxes {
+        min-height: 10rem;
+        height: fit-content;
     }
 }
 </style>

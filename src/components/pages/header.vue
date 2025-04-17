@@ -21,7 +21,7 @@
 .header {
     width: 100%;
     height: auto;
-    padding: 1rem 2.5rem;
+    padding: 1.5rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +30,7 @@
 
 .label {
     color: var(--primary-color);
-    font-size: clamp(16px, 3vw, 22px);
+    font-size: clamp(20px, 3vw, 26px);
 }
 .ipt-con {
     width: fit-content;

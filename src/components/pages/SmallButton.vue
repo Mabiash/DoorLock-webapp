@@ -7,8 +7,6 @@ const props = defineProps({
 function smBtnClick() {
     emit('smBtnEvent');
 }
-
-
 </script>
 
 <template>

@@ -54,6 +54,12 @@ export const roomsData = defineStore("counter", {
     },
     hasRoomOpen(state){
       return state.data.some(room => room.isOpen)
+    },
+    isAllRoomsClosed(state){
+      return state.data.every(rooms => !rooms.isOpen)
+    },
+    isAllRoomsOpen(state){
+      return state.data.every(rooms => rooms.isOpen)
     }
   },
 

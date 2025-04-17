@@ -37,7 +37,7 @@
 <style scoped>
 .logo {
     text-align: center;
-    padding: 1.2rem;
+    padding: 2rem;
     color: white;
     border-radius: 10px;
 
@@ -50,18 +50,18 @@
 
 li {
     position: relative;
-    padding: 15px 3.8rem 15px 10px;
+    padding: 15px 4.8rem 15px 10px;
     list-style: none;
     color: white;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 li i{
-    font-size: 16px;    
+    font-size: 18px;    
 }
 
 li:hover {
