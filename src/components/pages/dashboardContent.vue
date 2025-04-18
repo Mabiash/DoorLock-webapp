@@ -4,9 +4,11 @@ import CustomMDButton from "./MediumButton.vue"
 import CustomSMButton from "./SmallButton.vue"
 import { roomsData } from "../../stores/roomsData"
 import RecentLogs from "./recentActivity.vue"
-
 const rooms = roomsData()
 
+const props = defineProps({
+    isDashboard: String
+})
 
 const closedAllDoors = () => {
     rooms.data.forEach(room => {
@@ -28,7 +30,8 @@ const updateStatus = (roomId) => {
 </script>
 
 <template>
-    <section class="content-container">
+   <transition>
+    <section v-if="props.isDashboard" class="content-container">
         <div class="boxes rooms-open-con">
             <div class="rooms-heading">
                 <h4>Open Rooms</h4>
@@ -79,6 +82,7 @@ const updateStatus = (roomId) => {
             <RecentLogs />
         </div>
     </section>
+   </transition>
 </template>
 
 <style scoped>

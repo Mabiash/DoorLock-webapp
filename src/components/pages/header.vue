@@ -1,9 +1,15 @@
 <script setup>
+import {defineProps} from "vue"
+
+const props = defineProps({
+    headerTitle: String
+});
+
 </script>
 
 <template>
     <header class="header">
-        <h1 class="label">Dashboard</h1>
+        <h1 class="label">{{props.headerTitle}}</h1>
         <div class="ipt-con">
             <!-- <div class="ipt">
                 <input type="text" placeholder="Search rooms..." class="search-room">

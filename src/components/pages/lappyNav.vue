@@ -1,4 +1,31 @@
 <script setup>
+import {defineEmits, ref} from "vue"
+const emit = defineEmits(['goToRooms', 'goToDashboard', 'goToHistory']);
+const isDashboardActive = ref(true);
+const isRoomsActive = ref(false)
+const isHistoryActive = ref(false)
+
+function navigateToRooms(){
+    emit('goToRooms');
+    isDashboardActive.value = false;
+    isRoomsActive.value = true;
+    isHistoryActive.value = false;
+}
+
+function navigateToDashboard(){
+    emit('goToDashboard');
+    isDashboardActive.value = true;
+    isRoomsActive.value = false;
+    isHistoryActive.value = false;
+}
+
+function navigateToHistory(){
+    emit('goToHistory');
+    isDashboardActive.value = false;
+    isRoomsActive.value = false;
+    isHistoryActive.value = true;
+}
+
 
 </script>
 
@@ -8,21 +35,21 @@
             <h1 class="logo">Logo</h1>
         </div>
         <ul class="w-full h-auto mt-10 text-white">
-            <li class="active">
+            <li :class="{active:isDashboardActive}" @click="navigateToDashboard">
                 <i class="fa-solid fa-table-columns"></i>
                 <p>Dashboard</p>
                 <div class="na-r-t"></div>
                 <div class="na-r-b"></div>
             </li>
             <li
-                class="">
+            :class="{active:isRoomsActive}"    @click="navigateToRooms">
                 <i class="fa-solid fa-door-closed"></i>
                 <p>Rooms</p>
                 <div class="na-r-t"></div>
                 <div class="na-r-b"></div>
             </li>
             <li
-                class=" ">
+            :class="{active:isHistoryActive}" @click="navigateToHistory">
                 <i class="fa-solid fa-file"></i>
                 <p>History</p>
                 <div class="na-r-t"></div>
@@ -46,11 +73,12 @@
     height: 100vh;
     width: fit-content;
     background-color: var(--primary-color);
+    width: 10rem;
 }
 
 li {
     position: relative;
-    padding: 15px 4.8rem 15px 10px;
+    padding: 1rem 0px;
     list-style: none;
     color: white;
     cursor: pointer;
@@ -58,6 +86,7 @@ li {
     display: flex;
     align-items: center;
     gap: 10px;
+    transition: all 150ms
 }
 
 li i{

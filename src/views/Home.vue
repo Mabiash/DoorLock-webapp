@@ -1,17 +1,32 @@
 <script setup>
+import {ref} from "vue"
 import Header from "../components/pages/header.vue";
 import SideNav from "../components/pages/lappyNav.vue";
-import Content from "../components/pages/dashboardContent.vue"
+import DashboardContent from "../components/pages/dashboardContent.vue";
+import RoomsContent from "../components/pages/roomsContent.vue"
+const isDashboard = ref(true)
+const isRoom = ref(false)
+const headerTitle = ref('Dashboard')
+function roomsEvent(){
+    isDashboard.value = false;
+    isRoom.value = true;
+    headerTitle.value = 'Rooms'
+}
+
+function dashboardEvent(){
+    isRoom.value = false;
+    isDashboard.value = true;
+    headerTitle.value = 'Dashboard'
+}
 </script>
 
 <template >
    
-    <SideNav />
+    <SideNav @goToRooms="roomsEvent" @goToDashboard="dashboardEvent"/>
     <section class="main-content">
-         <Header />
-        <Content />
-
-
+         <Header :headerTitle="headerTitle"/>
+        <DashboardContent :isDashboard="isDashboard"/>
+        <RoomsContent v-if="isRoom"/>
         <div class="curve-t">
 
         </div>

@@ -1,4 +1,5 @@
 <script setup>
+import {defineEmits} from "vue"
 const emit = defineEmits(['smBtnEvent'])
 const props = defineProps({
     roomIsOpen: Boolean
