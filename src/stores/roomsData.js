@@ -12,6 +12,13 @@ export const roomsData = defineStore("counter", {
         id: 1,
       },
       {
+        roomName: "BIST 2F111111",
+        isOpen: false,
+        reponsible: "Kieth Mendizabal",
+        date: new Date(),
+        id: 1,
+      },
+      {
         roomName: "BIST 2F1",
         isOpen: false ,
         reponsible: "Kieth Mendizabal",
@@ -34,7 +41,7 @@ export const roomsData = defineStore("counter", {
       },
       {
         roomName: "BIST 2F3",
-        isOpen: true,
+        isOpen: false,
         reponsible: "Trecia Mae",
         date: new Date(),
         id: 5,

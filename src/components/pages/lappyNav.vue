@@ -73,12 +73,13 @@ function navigateToHistory(){
     height: 100vh;
     width: fit-content;
     background-color: var(--primary-color);
-    width: 10rem;
+    width: 12rem;
+
 }
 
 li {
     position: relative;
-    padding: 1rem 0px;
+    padding: 1rem 1rem;
     list-style: none;
     color: white;
     cursor: pointer;

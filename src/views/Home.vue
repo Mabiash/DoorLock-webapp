@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from "vue"
+import { ref } from "vue"
 import Header from "../components/pages/header.vue";
 import SideNav from "../components/pages/lappyNav.vue";
 import DashboardContent from "../components/pages/dashboardContent.vue";
@@ -7,13 +7,13 @@ import RoomsContent from "../components/pages/roomsContent.vue"
 const isDashboard = ref(true)
 const isRoom = ref(false)
 const headerTitle = ref('Dashboard')
-function roomsEvent(){
+function roomsEvent() {
     isDashboard.value = false;
     isRoom.value = true;
     headerTitle.value = 'Rooms'
 }
 
-function dashboardEvent(){
+function dashboardEvent() {
     isRoom.value = false;
     isDashboard.value = true;
     headerTitle.value = 'Dashboard'
@@ -21,12 +21,11 @@ function dashboardEvent(){
 </script>
 
 <template >
-   
-    <SideNav @goToRooms="roomsEvent" @goToDashboard="dashboardEvent"/>
+    <SideNav @goToRooms="roomsEvent" @goToDashboard="dashboardEvent" />
     <section class="main-content">
-         <Header :headerTitle="headerTitle"/>
-        <DashboardContent :isDashboard="isDashboard"/>
-        <RoomsContent v-if="isRoom"/>
+        <Header :headerTitle="headerTitle" />
+        <DashboardContent :isDashboard="isDashboard" />
+        <RoomsContent v-if="isRoom" />
         <div class="curve-t">
 
         </div>
@@ -46,7 +45,7 @@ function dashboardEvent(){
     overflow: hidden;
     border: 4px solid var(--primary-color);
     border-left: none;
-    
+
 }
 
 .curve-b,
@@ -64,16 +63,17 @@ function dashboardEvent(){
 
 .curve-b {
     bottom: 0;
-    border-radius:0 0 0 30px ;
-    box-shadow: -15px 15px 0px  var(--primary-color);
+    border-radius: 0 0 0 30px;
+    box-shadow: -15px 15px 0px var(--primary-color);
 }
 
 @media screen and (max-width: 650px) {
-    .curve-t, .curve-b{
+    .curve-t,
+    .curve-b {
         display: none;
     }
 
-    .main-content{
+    .main-content {
         border: none;
     }
 }
