@@ -1,13 +1,9 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref } from "vue";
 import { roomsData } from "../../stores/roomsData"
 
 
 const rooms = roomsData();
-
-const props = defineProps({
-    isRooms: String,
-});
 
 const isOpen = ref(false);
 </script>

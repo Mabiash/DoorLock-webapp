@@ -1,4 +1,4 @@
-// src/stores/counter.js
+
 import { defineStore } from "pinia";
 
 export const roomsData = defineStore("counter", {
@@ -12,11 +12,18 @@ export const roomsData = defineStore("counter", {
         id: 1,
       },
       {
+        roomName: "BIST 3F1",
+        isOpen: false,
+        reponsible: "Kieth Mendizabal",
+        date: new Date(),
+        id: 12,
+      },
+      {
         roomName: "BIST 2F111111",
         isOpen: false,
         reponsible: "Kieth Mendizabal",
         date: new Date(),
-        id: 1,
+        id: 10,
       },
       {
         roomName: "BIST 2F1",

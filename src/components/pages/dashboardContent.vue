@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from "vue"
-import CustomMDButton from "./MediumButton.vue"
-import CustomSMButton from "./SmallButton.vue"
+import CustomMDButton from "./mediumbutton.vue"
+import CustomSMButton from "./smallButton.vue"
 import { roomsData } from "../../stores/roomsData"
 import RecentLogs from "./recentActivity.vue"
 const rooms = roomsData()
@@ -31,7 +31,7 @@ const updateStatus = (roomId) => {
 
 <template>
    <transition>
-    <section v-if="props.isDashboard" class="content-container">
+    <section class="content-container">
         <div class="boxes rooms-open-con">
             <div class="rooms-heading">
                 <h4>Open Rooms</h4>

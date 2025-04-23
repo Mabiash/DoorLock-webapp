@@ -1,31 +1,70 @@
 <script setup>
-import { ref } from "vue"
+import { ref, watch, computed} from "vue"
 import Header from "../components/pages/header.vue";
 import SideNav from "../components/pages/lappyNav.vue";
 import DashboardContent from "../components/pages/dashboardContent.vue";
 import RoomsContent from "../components/pages/roomsContent.vue"
-const isDashboard = ref(true)
-const isRoom = ref(false)
-const headerTitle = ref('Dashboard')
+import historyContent from "../components/pages/historyContent.vue"
+
+// Set values (as strings)
+const isDashboard = ref(
+    localStorage.getItem('isDashboard') !== null
+        ? localStorage.getItem('isDashboard') === 'true'
+        : true
+);
+
+const isRoom = ref(
+    localStorage.getItem('isRoom') !== null
+        ? localStorage.getItem('isRoom') === 'true'
+        : false
+);
+
+const isHistory = ref(
+    localStorage.getItem('isHistory') !== null
+        ? localStorage.getItem('isHistory') === 'true'
+        : false
+);
+
+const headerTitle = computed(() => {
+  if (isDashboard.value) return 'Dashboard'
+  if (isRoom.value) return 'Rooms'
+  return 'History' 
+})
 function roomsEvent() {
     isDashboard.value = false;
+    isHistory.value = false;
     isRoom.value = true;
     headerTitle.value = 'Rooms'
 }
 
+
 function dashboardEvent() {
     isRoom.value = false;
+    isHistory.value = false;
     isDashboard.value = true;
     headerTitle.value = 'Dashboard'
 }
+
+const historyEvent = () => {
+    isHistory.value = true;
+    isRoom.value = false;
+    isDashboard.value = false;
+    headerTitle.value = 'History'
+}
+watch([isDashboard, isRoom, isHistory], ([newDashboard, newRoom, newHistory]) => {
+    localStorage.setItem('isDashboard', newDashboard.toString());
+    localStorage.setItem('isRoom', newRoom.toString());
+    localStorage.setItem('isHistory', newHistory.toString());
+})
 </script>
 
 <template >
-    <SideNav @goToRooms="roomsEvent" @goToDashboard="dashboardEvent" />
+    <SideNav @goToRooms="roomsEvent" @goToDashboard="dashboardEvent"  @goToHistory="historyEvent"/>
     <section class="main-content">
         <Header :headerTitle="headerTitle" />
-        <DashboardContent :isDashboard="isDashboard" />
+        <DashboardContent v-if="isDashboard" />
         <RoomsContent v-if="isRoom" />
+        <historyContent v-if="isHistory"/>
         <div class="curve-t">
 
         </div>

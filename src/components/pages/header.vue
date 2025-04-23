@@ -31,10 +31,7 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-}
-
-.label {
+}.label {
     color: var(--primary-color);
     font-size: clamp(20px, 3vw, 26px);
 }

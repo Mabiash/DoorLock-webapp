@@ -1,9 +1,16 @@
 <script setup>
-import {defineEmits, ref} from "vue"
+import {defineEmits, ref, watch} from "vue"
 const emit = defineEmits(['goToRooms', 'goToDashboard', 'goToHistory']);
-const isDashboardActive = ref(true);
-const isRoomsActive = ref(false)
-const isHistoryActive = ref(false)
+
+
+const loadBoolean = (key, defaultValue) => {
+  const value = localStorage.getItem(key)
+  return value !== null ? value === 'true' : defaultValue
+}
+
+const isDashboardActive = ref(loadBoolean('isDashboardActive', true))
+const isRoomsActive = ref(loadBoolean('isRoomsActive', false))
+const isHistoryActive = ref(loadBoolean('isHistoryActive', false))
 
 function navigateToRooms(){
     emit('goToRooms');
@@ -26,6 +33,14 @@ function navigateToHistory(){
     isHistoryActive.value = true;
 }
 
+watch(
+  [isDashboardActive, isRoomsActive, isHistoryActive],
+  ([newDash, newRooms, newHistory]) => {
+    localStorage.setItem('isDashboardActive', newDash.toString())
+    localStorage.setItem('isRoomsActive', newRooms.toString())
+    localStorage.setItem('isHistoryActive', newHistory.toString())
+  }
+)
 
 </script>
 
